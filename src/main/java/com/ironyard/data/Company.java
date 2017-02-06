@@ -10,14 +10,16 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
-    private String phone;
 
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address workAddress;
-
+    @OneToOne(cascade = {CascadeType.ALL})
     private Instructor teacher;
+    @OneToMany(cascade = {CascadeType.ALL})
     private BootCamp typesOfBootCamps;
 
+    private String name;
+    private String phone;
     public long getId() {
         return id;
     }

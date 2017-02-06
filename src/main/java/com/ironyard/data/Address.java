@@ -8,8 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToOne(cascade = CascadeType.ALL)
+    @GeneratedValue
     private long id;
     private String street;
     private String city;

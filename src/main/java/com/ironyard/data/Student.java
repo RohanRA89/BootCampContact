@@ -12,7 +12,8 @@ public class Student {
     private long id;
     private String name;
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address homeAddress;
     public long getId() {
         return id;

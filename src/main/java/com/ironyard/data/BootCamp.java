@@ -11,15 +11,18 @@ public class BootCamp {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @OneToOne
+//
+    @OneToOne(cascade = {CascadeType.ALL})
     private Instructor teacher;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Student students;
 
     private String name;
     private String startDate;
     private String endDate;
 
-    private Student students;
+
 
     public String getStartDate() {
         return startDate;

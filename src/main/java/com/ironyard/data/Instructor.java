@@ -11,13 +11,15 @@ public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
     private String hireDate;
 
-
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address homeAddress;
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Address workAddress;
-
+    @OneToOne(cascade = {CascadeType.ALL})
     private BootCamp bootCampsTaught;
 
     public long getId() {
@@ -27,6 +29,7 @@ public class Instructor {
     public void setId(long id) {
         this.id = id;
     }
+
 
     public String getName() {
         return name;

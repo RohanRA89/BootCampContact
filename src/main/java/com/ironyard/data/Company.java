@@ -1,6 +1,7 @@
 package com.ironyard.data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by rohanayub on 2/3/17.
@@ -13,10 +14,15 @@ public class Company {
 
     @OneToOne(cascade = {CascadeType.ALL})
     private Address workAddress;
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Instructor teacher;
     @OneToMany(cascade = {CascadeType.ALL})
-    private BootCamp typesOfBootCamps;
+    private List<Instructor> teacher;
+
+
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<BootCamp> typesOfBootCamps;
+
+
 
     private String name;
     private String phone;
@@ -52,22 +58,22 @@ public class Company {
         this.workAddress = workAddress;
     }
 
-    public Instructor getTeacher() {
-        return teacher;
-    }
 
-    public void setTeacher(Instructor teacher) {
-        this.teacher = teacher;
-    }
-
-    public BootCamp getTypesOfBootCamps() {
+    public List<BootCamp> getTypesOfBootCamps() {
         return typesOfBootCamps;
     }
 
-    public void setTypesOfBootCamps(BootCamp typesOfBootCamps) {
+    public void setTypesOfBootCamps(List<BootCamp> typesOfBootCamps) {
         this.typesOfBootCamps = typesOfBootCamps;
     }
 
 
+    public List<Instructor> getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(List<Instructor> teacher) {
+        this.teacher = teacher;
+    }
 
 }

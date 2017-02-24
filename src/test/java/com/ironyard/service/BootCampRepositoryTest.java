@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 /**
  * Created by rohanayub on 2/5/17.
@@ -62,7 +64,7 @@ public void saveToBootCampRepo(){
        bootCampOne.setName("Iron Yard");
        bootCampOne.setStartDate("March 15th 2004");
        bootCampOne.setEndDate("July 15th 2004");
-       bootCampOne.setStudents(studentOne);
+       bootCampOne.setStudents((List<Student>) studentOne);
        bootCampOne.setTeacher(teacherOne);
 
    myBootCampRepo.save(bootCampOne);

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -56,11 +58,11 @@ public class InstructorRepositoryTest {
         BootCamp javaBootCamp = new BootCamp();
         javaBootCamp.setTeacher(teacher);
         javaBootCamp.setName("Java");
-        javaBootCamp.setStudents(studentOne);
+        javaBootCamp.setStudents((List<Student>) studentOne);
         javaBootCamp.setEndDate("March 31st 2017");
 
 
-        teacher.setBootCampsTaught(javaBootCamp);
+        teacher.setBootCampsTaught((List<BootCamp>) javaBootCamp);
 
         myInstructorRepo.save(teacher);
 

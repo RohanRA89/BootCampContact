@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -66,7 +68,7 @@ public class CompanyRepositoryTest {
         bootCampOne.setName("Iron Yard");
         bootCampOne.setStartDate("March 15th 2004");
         bootCampOne.setEndDate("July 15th 2004");
-        bootCampOne.setStudents(studentOne);
+        bootCampOne.setStudents((List<Student>) studentOne);
         bootCampOne.setTeacher(teacher);
         bootCampOne.setTeacher(teacher2);
 
@@ -74,11 +76,11 @@ public class CompanyRepositoryTest {
         Company companyOne = new Company();
         companyOne.setName("IronYard");
         companyOne.setPhone("407-324-1234");
-        companyOne.setTeacher(teacher);
-        companyOne.setTeacher(teacher2);
+        companyOne.setTeacher((List<Instructor>) teacher);
+        companyOne.setTeacher((List<Instructor>) teacher2);
         //companyOne.setTypesOfBootCamps();
         companyOne.setWorkAddress(workAddress);
-        companyOne.setTypesOfBootCamps(bootCampOne);
+        companyOne.setTypesOfBootCamps((List<BootCamp>) bootCampOne);
         myCompanyRepo.save(companyOne);
 
         Company found = myCompanyRepo.findOne(companyOne.getId());

@@ -2,6 +2,7 @@ package com.ironyard.data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by rohanayub on 2/3/17.
@@ -14,13 +15,12 @@ public class Instructor {
 
     private String name;
     private String hireDate;
-
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
     private Address homeAddress;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
     private Address workAddress;
-    @OneToOne(cascade = {CascadeType.ALL})
-    private BootCamp bootCampsTaught;
+    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+    private List<BootCamp> bootCampsTaught;
 
     public long getId() {
         return id;
@@ -63,11 +63,11 @@ public class Instructor {
         this.workAddress = workAddress;
     }
 
-    public BootCamp getBootCampsTaught() {
+    public List<BootCamp> getBootCampsTaught() {
         return bootCampsTaught;
     }
 
-    public void setBootCampsTaught(BootCamp bootCampsTaught) {
+    public void setBootCampsTaught(List<BootCamp> bootCampsTaught) {
         this.bootCampsTaught = bootCampsTaught;
     }
 

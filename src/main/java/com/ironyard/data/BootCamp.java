@@ -2,6 +2,7 @@ package com.ironyard.data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by rohanayub on 2/3/17.
@@ -12,11 +13,11 @@ public class BootCamp {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 //
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
     private Instructor teacher;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Student students;
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<Student> students;
 
     private String name;
     private String startDate;
@@ -67,15 +68,16 @@ public class BootCamp {
         this.name = name;
     }
 
-
-
-    public Student getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+
+
 
 
 }
